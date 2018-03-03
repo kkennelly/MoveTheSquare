@@ -25,9 +25,28 @@ public class GameController {
 			game.setSquareDy(moveY);
 		}
 	}
+	
+	public boolean validMove(Game model, Square square) {
+		double futurePosX = square.getX() + model.getSquareDx();
+		double futurePosY = square.getY() + model.getSquareDy();
+		
+		if(futurePosX + square.getWidth() > model.getWidth() || futurePosX < 0) {
+			System.out.println("The move is invalid");
+			return false;
+		}
+		else if(futurePosY + square.getHeight() > model.getHeight() || futurePosY < 0) {
+			System.out.println("The move is invalid");
+			return false;
+		}
+		
+		System.out.println("The move is valid");
+		return true;
+	}
 
 	public void moveSquare(Game model, Square square) {
+		
 		square.setX(square.getX() + model.getSquareDx());
 		square.setY(square.getY() + model.getSquareDy());
+			
 	}
 }
